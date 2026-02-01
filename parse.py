@@ -22,11 +22,11 @@ load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
-CORS(app)
+#CORS(app)
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:5173"]}})
 
 # Configure LlamaIndex with Gemini
 GEMINI_API_KEY = os.getenv("GOOGLE_API_KEY")
-print("Using Gemini API Key:", GEMINI_API_KEY)
 
 Settings.llm = Gemini(
     api_key=GEMINI_API_KEY,
